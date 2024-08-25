@@ -1,15 +1,15 @@
 # from typing import Union
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI, Form, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static", html = True), name = "static")
+app.mount("/static", StaticFiles(directory="static"), name = "static")
 templates = Jinja2Templates(directory="templates")
 
 user_data = [];
-user_id = 1;
+id = 1;
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
@@ -23,10 +23,18 @@ async def clean_users():
 
 
 @app.post("/templates")
-async def post_form(request : Request, name: str = Form(), email: str = Form(), address: str = Form(), phone: str = Form(), count: str = Form()):
-    global user_id;
-    # user_data.append({"user_id": user_id, "name": name, "email": email, "address": address, "phone": phone, "count": count})
-    user_id+=1;
+async def post_form(name: str = Form(), email: str = Form(), address: str = Form(), phone: str = Form(), count: str = Form()):
+    global id;
+    user_data.append({"id": id, "name": name, "email": email, "address": address, "phone": phone, "count": count})
+    id+=1;
     print("User has signed up for supply package.");
-    redirect_url = request.url_for("read_root");
-    return RedirectResponse("/");
+    return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER);
+
+
+@app.get("/delete/{user_id}")
+async def delete(user_id: int):
+    for user in user_data:
+        if user["id"] == user_id:
+            user_data.remove(user)
+
+    return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER);

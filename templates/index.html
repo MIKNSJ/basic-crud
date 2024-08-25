@@ -12,7 +12,7 @@
 rel="stylesheet">
 
         <!-- <link rel = "icon" href = "assets/favicon.ico"> -->
-        <link rel = "stylesheet" href = "../static/styles.css"/>
+        <link rel = "stylesheet" href = {{url_for("static", path="../static/styles.css")}}/>
         <!-- <script src = "script.js"></script> -->
         <title> Basic CRUD </title>
     </head>
@@ -36,6 +36,7 @@ rel="stylesheet">
                             <p id = "company" class = "company_"> Supply Chains Corp. </p>
                             <p id = "address" class = "address_"> 12345 Highway Drive </p>
                             <p id = "state" class = "state_"> Boston, Massachusetts </p>
+                            <p id = "zip" class = "zip_"> 32948-9480 </p>
                             <p id = "phone" class = "phone_"> (234) 567-8901 </p>
                         </div>
 
@@ -47,28 +48,30 @@ rel="stylesheet">
                     <div id = "form_questions" class = "form__questions">
                         <div id = "name_box" class = "form_sec_box">
                             <label for = "name" class = "label_box"> Enter your full name: </label>
-                            <input type = "text" name = "name" placeholder = "Ex: John Smith" autocomplete = "off" class = "text_box">
+                            <input type = "text" name = "name" placeholder = "Ex: John Smith" autocomplete = "off"
+                            required class = "text_box">
                         </div>
 
                         <div id = "email_box" class = "form_sec_box">
-                            <label for = "name" class = "label_box"> Enter your email: </label>
+                            <label for = "email" class = "label_box"> Enter your email: </label>
                             <input type = "text" name = "email" placeholder = "Ex: johnsmith@gmail.com" autocomplete =
-                            "off" class = "text_box">
+                            "off" required class = "text_box">
                         </div>
 
                         <div id = "address_box" class = "form_sec_box">
-                            <label for = "name" class = "label_box"> Enter your address: </label>
-                            <input type = "text" name = "address" placeholder = "Ex: 12345 Nomad Road, Greenville, Georgia, 45768" autocomplete = "off" class = "text_box">
+                            <label for = "address" class = "label_box"> Enter your address: </label>
+                            <input type = "text" name = "address" placeholder = "Ex: 12345 Nomad Road, Greenville, Georgia, 45768" autocomplete = "off" required class = "text_box">
                         </div>
                         
                         <div id = "phone_box" class = "form_sec_box">
-                            <label for = "name" class = "label_box"> Enter your phone number: </label>
-                            <input type = "text" name = "phone" placeholder = "Ex: (123) 456-7890" autocomplete = "off" class = "text_box">
+                            <label for = "phone" class = "label_box"> Enter your phone number: </label>
+                            <input type = "text" name = "phone" placeholder = "Ex: (123) 456-7890" autocomplete = "off"
+                            required class = "text_box">
                         </div>
 
                         <div id = "supply_count_box" class = "form_sec_box">
                             <label for = "name" class = "label_box"> Enter the number of supply packages: </label>
-                            <input type = "text" name = "count" placeholder = "Ex: 1" autocomplete = "off" class = "text_box">
+                            <input type = "text" name = "count" placeholder = "Ex: 1" autocomplete = "off" required class = "text_box">
                         </div>
 
                     </div>
@@ -90,19 +93,18 @@ rel="stylesheet">
                             <label class = "res__label_box"> Address </label>
                             <label class = "res__label_box"> Phone </label>
                             <label class = "res__label_box"> Count </label>
-                            <label class = "res__label_box"> Edit </label>
-                            <label class = "res__label_box"> Delete </label>
+                            <label class = "res__label_box"> Actions </label>
                         </div>
 
                         {% for user in user_data %}
-                            <div class = "response__box">
-                                <label class = "res__label_box"> {{user.name}}</label>
-                                <label class = "res__label_box"> {{user.email}}</label>
+                            <div id = "user_id_{{user.id}}" class = "response__box">
+                                <label class = "res__label_box"> {{user.name}} </label>
+                                <label class = "res__label_box"> {{user.email}} </label>
                                 <label class = "res__label_box"> {{user.address}} </label>
                                 <label class = "res__label_box"> {{user.phone}} </label>
                                 <label class = "res__label_box"> {{user.count}} </label>
-                                <label class = "res__label_box"> Edit </label>
-                                <label class = "res__label_box"> Delete </label>
+                                <a href = "edit/{{user.id}}" class = "res__label_box edit"> Edit </a>
+                                <a href = "delete/{{user.id}}" class = "res__label_box delete"> Delete </a>
                             </div>
                         {% endfor %}
                     </div>
