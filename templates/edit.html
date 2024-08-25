@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name = "format-detection" content = "telephone=no"/>
+
+        <!-- Preloaded font for potential issues across browsers -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+rel="stylesheet">
+
+        <!-- <link rel = "icon" href = "assets/favicon.ico"> -->
+        <link rel = "stylesheet" href = {{url_for("static", path="../static/styles.css")}}/>
+        <!-- <script src = "script.js"></script> -->
+        <title> Basic CRUD </title>
+    </head>
+
+    <body>
+        <header>
+            <div id = "body-head-con01" class = "container">
+                <div id = "header_box" class = "header__box">
+                    <h1 id = "header_title" class = "header__title"> Basic CRUD </h1>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id = "body-form-con01" class = "container">
+                <form action = "/resubmit/{{edit_user[0].id}}" method = "post" id = "form_box" class = "form__box">
+                    <div id = "form_header" class = "form__header">
+                        <h2 id = "form_title" class = "form__title"> Supply Package Application </h2>
+
+                        <div id = "about" class = "about">
+                            <p id = "company" class = "company_"> Supply Chains Corp. </p>
+                            <p id = "address" class = "address_"> 12345 Highway Drive </p>
+                            <p id = "state" class = "state_"> Boston, Massachusetts </p>
+                            <p id = "zip" class = "zip_"> 32948-9480 </p>
+                            <p id = "phone" class = "phone_"> (234) 567-8901 </p>
+                        </div>
+
+                        <h3 id = "form_description"> You are now EDITING the application for the selected user. </h3>
+                    </div>
+
+                    <div id = "form_questions" class = "form__questions">
+                        <div id = "name_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Edit your full name: </label>
+                            <input type = "text" name = "name" placeholder = "Ex: John Smith" value = "{{edit_user[0].name}}" autocomplete = "off" required class = "text_box">
+                        </div>
+
+                        <div id = "email_box" class = "form_sec_box">
+                            <label for = "email" class = "label_box"> Edit your email: </label>
+                            <input type = "text" name = "email" placeholder = "Ex: johnsmith@gmail.com" value = "{{edit_user[0].email}}" autocomplete = "off" required class = "text_box">
+                        </div>
+
+                        <div id = "address_box" class = "form_sec_box">
+                            <label for = "address" class = "label_box"> Edit your address: </label>
+                            <input type = "text" name = "address" placeholder = "Ex: 12345 Nomad Road, Greenville, Georgia, 45768" value = "{{edit_user[0].address}}" autocomplete = "off" required class = "text_box">
+                        </div>
+                        
+                        <div id = "phone_box" class = "form_sec_box">
+                            <label for = "phone" class = "label_box"> Edit your phone number: </label>
+                            <input type = "text" name = "phone" placeholder = "Ex: (123) 456-7890" value = "{{edit_user[0].phone}}" autocomplete = "off" required class = "text_box">
+                        </div>
+
+                        <div id = "supply_count_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Edit the number of supply packages: </label>
+                            <input type = "text" name = "count" placeholder = "Ex: 1" value = "{{edit_user[0].count}}" autocomplete = "off" required class = "text_box">
+                        </div>
+
+                    </div>
+                    
+                    <div id = "submit_box">
+                        <input type = "submit" name = "submit" value = "Apply Changes/Finish" id = "submit_button">
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <div id = "ft-foot-con01" class = "container">
+                <div id = "footer" class = "footer_">
+                    <div id = "credit" class = "credit_">
+                        <p id = "copyright"> &#169 Supply Chain Corp. 2024 </p>
+                        <a href = "https://github.com/MIKNSJ/basic-crud" target = "_blank" rel = "noopener noreferrer" id = "source">View Source</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+<html>

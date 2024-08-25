@@ -22,7 +22,7 @@ async def clean_users():
     return {"Clean": "Success"}
 
 
-@app.post("/templates")
+@app.post("/submit")
 async def post_form(name: str = Form(), email: str = Form(), address: str = Form(), phone: str = Form(), count: str = Form()):
     global id;
     user_data.append({"id": id, "name": name, "email": email, "address": address, "phone": phone, "count": count})
@@ -31,10 +31,29 @@ async def post_form(name: str = Form(), email: str = Form(), address: str = Form
     return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER);
 
 
+@app.get("/edit/{user_id}", response_class=HTMLResponse)
+async def read_edit(request: Request, user_id: int):
+    edit_user = []
+    for user in user_data:
+        if user["id"] == user_id:
+            edit_user.append(user)
+
+    return templates.TemplateResponse(request=request, name="edit.html", context = {"edit_user": edit_user});
+
+
+@app.post("/resubmit/{user_id}")
+async def change_form(user_id: int, name: str = Form(), email: str = Form(), address: str = Form(), phone: str = Form(), count: str = Form()):
+    for i in range(len(user_data)):
+        if user_data[i]["id"] == user_id:
+           user_data[i] = {"id": user_id, "name": name, "email": email, "address": address, "phone": phone, "count": count}
+
+    return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER)
+
+
 @app.get("/delete/{user_id}")
 async def delete(user_id: int):
     for user in user_data:
         if user["id"] == user_id:
             user_data.remove(user)
 
-    return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER);
+    return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER)

@@ -12,7 +12,7 @@
 rel="stylesheet">
 
         <!-- <link rel = "icon" href = "assets/favicon.ico"> -->
-        <link rel = "stylesheet" href = {{url_for("static", path="../static/styles.css")}}/>
+        <link rel = "stylesheet" href = "../static/styles.css"/>
         <!-- <script src = "script.js"></script> -->
         <title> Basic CRUD </title>
     </head>
@@ -28,7 +28,7 @@ rel="stylesheet">
 
         <main>
             <div id = "body-form-con01" class = "container">
-                <form action = "/templates" method = "post" id = "form_box" class = "form__box">
+                <form action = "/submit" method = "post" id = "form_box" class = "form__box">
                     <div id = "form_header" class = "form__header">
                         <h2 id = "form_title" class = "form__title"> Supply Package Application </h2>
 
@@ -103,7 +103,7 @@ rel="stylesheet">
                                 <label class = "res__label_box"> {{user.address}} </label>
                                 <label class = "res__label_box"> {{user.phone}} </label>
                                 <label class = "res__label_box"> {{user.count}} </label>
-                                <a href = "edit/{{user.id}}" class = "res__label_box edit"> Edit </a>
+                                <a href = "edit/{{user.id}}" class = "res__label_box edit"> Edit/View </a>
                                 <a href = "delete/{{user.id}}" class = "res__label_box delete"> Delete </a>
                             </div>
                         {% endfor %}
