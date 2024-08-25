@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name = "format-detection" content = "telephone=no"/>
+
+        <!-- Preloaded font for potential issues across browsers -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+rel="stylesheet">
+
+        <!-- <link rel = "icon" href = "assets/favicon.ico"> -->
+        <link rel = "stylesheet" href = "styles.css"/>
+        <!-- <script src = "script.js"></script> -->
+        <title> Basic CRUD </title>
+    </head>
+
+    <body>
+        <header>
+            <div id = "body-head-con01" class = "container">
+                <div id = "header_box" class = "header__box">
+                    <h1 id = "header_title" class = "header__title"> Basic CRUD </h1>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id = "body-form-con01" class = "container">
+                <form id = "form_box" class = "form__box">
+                    <div id = "form_header" class = "form__header">
+                        <h2 id = "form_title" class = "form__title"> Supply Package Application </h2>
+
+                        <div id = about class = "about">
+                            <p id = "company" class = "company_"> Supply Chains Corp. </p>
+                            <p id = "address" class = "address_"> 12345 Highway Drive </p>
+                            <p id = "state" class = "state_"> Boston, Massachusetts </p>
+                            <p id = "phone" class = "phone_"> (234) 567-8901 </p>
+                        </div>
+
+                        <h5 id = "form_description_part_1"> Please fill out the following form to receive a supply
+                            package. </h5>
+                        <h5 id = "form_description_part_2"> Contents include: Food, Water, and a First-Aid Kit </h5>
+                    </div>
+
+                    <div id = "form_questions" class = "form__questions">
+                        <div id = "name_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Enter your full name: </label>
+                            <input type = "text" name = "name" placeholder = "Ex: John Smith" class = "text_box">
+                        </div>
+
+                        <div id = "email_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Enter your email: </label>
+                            <input type = "text" name = "email" placeholder = "Ex: johnsmith@gmail.com" class = "text_box">
+                        </div>
+
+                        <div id = "address_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Enter your address: </label>
+                            <input type = "text" name = "address" placeholder = "Ex: 12345 Nomad Road, Greenville, Georgia, 45768" class = "text_box">
+                        </div>
+                        
+                        <div id = "phone_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Enter your phone number: </label>
+                            <input type = "text" name = "phone" placeholder = "Ex: (123) 456-7890" class = "text_box">
+                        </div>
+
+                        <div id = "supply_count_box" class = "form_sec_box">
+                            <label for = "name" class = "label_box"> Enter the number of supply packages: </label>
+                            <input type = "text" name = "count" placeholder = "Ex: 1" class = "text_box">
+                        </div>
+
+                    </div>
+                    
+                    <div id = "submit_box">
+                        <input type = "submit" name = "submit" value = "Submit" id = "submit_button">
+                    </div>
+                </form>
+            </div>
+
+            <div id = "body-responses-con02" class = "container">
+                <div id = responses>
+                    <h2 id = "res_title" class = "res__title"> Responses </h2>
+
+                    <div id = "response_table" class = "response__table">
+                        <div id = "res_tab_label" class = "response__box">
+                            <label class = "res__label_box"> Name </label>
+                            <label class = "res__label_box"> Email </label>
+                            <label class = "res__label_box"> Address </label>
+                            <label class = "res__label_box"> Phone </label>
+                            <label class = "res__label_box"> Count </label>
+                            <label class = "res__label_box"> Edit </label>
+                            <label class = "res__label_box"> Delete </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div id = "ft-foot-con01" class = "container">
+                <div id = "footer" class = "footer_">
+                    <div id = "credit" class = "credit_">
+                        <p id = "copyright"> &#169 Supply Chain Corp. 2024 </p>
+                        <a href = "https://github.com/MIKNSJ/basic-crud" target = "_blank" rel = "noopener noreferrer" id = "source">View Source</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+<html>
