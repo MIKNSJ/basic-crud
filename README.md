@@ -3,10 +3,22 @@
 ## Overview
 Basic CRUD application demonstrated through a simple form template.
 
+## Video
+Check out a video of the application [here](https://youtu.be/GCnkCVpzLcI).
+
+## Screenshots
+![website](screenshots/basic_crud_app.png)
+
 ## Description
-View the form design without full functionality [here](https://miknsj.github.io/basic-crud/templates/index.html).
+View the form design without the full functionality [here](https://miknsj.github.io/basic-crud/templates/index.html).
+
+## Notes
+Adaptive/Responsive Design was not enforced. For the best viewing purposes, please opt for a device with  a screen size of at least 1100px and a
+browser other than Safari.
 
 ## Contents
+- ```screenshots```: contains screenshots of the website
+- ```video```: contains a video of the website
 - ```README.md```: contains description of the repository
 - ```.gitignore```: hides files to the remote repository
 - ```static```: contains styles.css
@@ -27,6 +39,7 @@ View the form design without full functionality [here](https://miknsj.github.io/
 
 ## Versions
 - The default version will have a branch labeled as ```NoSQL``` which uses a temporary database of a Python list.
+- The modified version will have a branch labeled as ```SQL``` or refer to ```master``` which uses a SQL database. (TBD)
 
 ## Contributions
 Tools
