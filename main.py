@@ -22,6 +22,11 @@ async def clean_users():
     return {"Clean": "Success"}
 
 
+@app.get("/account", response_class=HTMLResponse)
+async def account(request: Request):
+    return templates.TemplateResponse(request=request, name="account.html");
+
+
 @app.post("/submit")
 async def post_form(name: str = Form(), email: str = Form(), address: str = Form(), phone: str = Form(), count: str = Form()):
     global id;
