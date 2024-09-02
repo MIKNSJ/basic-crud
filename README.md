@@ -4,7 +4,9 @@
 Basic CRUD application demonstrated through a simple form template.
 
 ## Video
-Check out a video of the application [here](https://youtu.be/GCnkCVpzLcI).
+Check out a video of the application without SQL [here](https://youtu.be/GCnkCVpzLcI).
+
+Check out a video of the application with SQL [here](https://youtu.be/4vke6_OJp_E).
 
 ## Screenshots
 ![website](screenshots/basic_crud_app.png)
@@ -39,7 +41,7 @@ browser other than Safari.
 
 ## Versions
 - The default version will have a branch labeled as ```NoSQL``` which uses a temporary database of a Python list.
-- The modified version will have a branch labeled as ```SQL``` or refer to ```master``` which uses a SQL database. (TBD)
+- The modified version will have a branch labeled as ```SQL``` or refer to ```master``` which uses a SQL database.
 
 ## Contributions
 Tools
@@ -48,6 +50,7 @@ Tools
 - Vim + coc.nvim
 - npm + live-server
 - FastAPI + uvicorn
+- SQLLite + DB Browser
 
 ## Changelog
 - Website Version 1.0 established on August 2024

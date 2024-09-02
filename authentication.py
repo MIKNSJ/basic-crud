@@ -2,11 +2,15 @@ from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
 import jwt
+import utilities as util
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
+
+from database import SessionLocal
 
 # to get a string like this run:
 # openssl rand -hex 32
@@ -15,7 +19,15 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
-users_db = {}
+# users_db = {}
+
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 class Token(BaseModel):
@@ -25,12 +37,6 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str
-
-
-class UserCreate(BaseModel):
-    username: str
-    hashed_password: str
-    disabled: bool | None = None
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -45,14 +51,15 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 
-def get_user(db, username: str):
-    if username in db:
-        user_entry = db[username]
-        return user_entry;
+#def get_user(db, username: str):
+#    if username in db:
+#        user_entry = db[username]
+#        return user_entry;
 
 
-def authenticate_user(db, username: str, password: str):
-    user = get_user(db, username)
+def authenticate_user(db: Session, username: str, password: str):
+    #user = get_user(db, username)
+    user = util.get_user(db, username)
 
     if not user:
         return False
@@ -73,7 +80,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
+async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: Session = Depends(get_db)):
     credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
@@ -87,14 +94,17 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
         token_data = TokenData(username=username)
     except InvalidTokenError:
         raise credentials_exception
-    user = get_user(users_db, username=token_data.username)
+
+    user = util.get_user(db, user_username=token_data.username)
+
     if user is None:
         raise credentials_exception
+
     return user
 
 
-async def get_current_active_user(current_user: Annotated[UserCreate, Depends(get_current_user)],):
-    if current_user.disabled:
+async def get_current_active_user(current_user: Annotated[util.schemas.User, Depends(get_current_user)],):
+    if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
 

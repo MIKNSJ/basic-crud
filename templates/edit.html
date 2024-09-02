@@ -28,7 +28,7 @@ rel="stylesheet">
 
         <main>
             <div id = "body-form-con01" class = "container">
-                <form action = "/resubmit/{{edit_user[0].id}}" method = "post" id = "form_box" class = "form__box">
+                <form action = "/resubmit/{{curr_item.id}}" method = "post" id = "form_box" class = "form__box">
                     <div id = "form_header" class = "form__header">
                         <h2 id = "form_title" class = "form__title"> Supply Package Application </h2>
 
@@ -46,27 +46,29 @@ rel="stylesheet">
                     <div id = "form_questions" class = "form__questions">
                         <div id = "name_box" class = "form_sec_box">
                             <label for = "name" class = "label_box"> Edit your full name: </label>
-                            <input type = "text" name = "name" placeholder = "Ex: John Smith" value = "{{edit_user[0].name}}" autocomplete = "off" required class = "text_box">
+                            <input type = "text" name = "name" placeholder = "Ex: John Smith" value = "{{curr_item.name}}" autocomplete = "off" required class = "text_box">
                         </div>
 
                         <div id = "email_box" class = "form_sec_box">
                             <label for = "email" class = "label_box"> Edit your email: </label>
-                            <input type = "text" name = "email" placeholder = "Ex: johnsmith@gmail.com" value = "{{edit_user[0].email}}" autocomplete = "off" required class = "text_box">
+                            <input type = "text" name = "email" placeholder = "Ex: johnsmith@gmail.com" value =
+                            "{{curr_item.email}}" autocomplete = "off" required class = "text_box">
                         </div>
 
                         <div id = "address_box" class = "form_sec_box">
                             <label for = "address" class = "label_box"> Edit your address: </label>
-                            <input type = "text" name = "address" placeholder = "Ex: 12345 Nomad Road, Greenville, Georgia, 45768" value = "{{edit_user[0].address}}" autocomplete = "off" required class = "text_box">
+                            <input type = "text" name = "address" placeholder = "Ex: 12345 Nomad Road, Greenville,
+                            Georgia, 45768" value = "{{curr_item.address}}" autocomplete = "off" required class = "text_box">
                         </div>
                         
                         <div id = "phone_box" class = "form_sec_box">
                             <label for = "phone" class = "label_box"> Edit your phone number: </label>
-                            <input type = "text" name = "phone" placeholder = "Ex: (123) 456-7890" value = "{{edit_user[0].phone}}" autocomplete = "off" required class = "text_box">
+                            <input type = "text" name = "phone" placeholder = "Ex: (123) 456-7890" value = "{{curr_item.phone}}" autocomplete = "off" required class = "text_box">
                         </div>
 
                         <div id = "supply_count_box" class = "form_sec_box">
                             <label for = "name" class = "label_box"> Edit the number of supply packages: </label>
-                            <input type = "text" name = "count" placeholder = "Ex: 1" value = "{{edit_user[0].count}}" autocomplete = "off" required class = "text_box">
+                            <input type = "text" name = "count" placeholder = "Ex: 1" value = "{{curr_item.count}}" autocomplete = "off" required class = "text_box">
                         </div>
 
                     </div>
